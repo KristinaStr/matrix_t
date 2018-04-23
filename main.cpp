@@ -19,6 +19,7 @@ public:
         data_ = nullptr;
     }
 
+    /*
     matrix_t(matrix_t const &other) {
         rows_ = other.rows_;
         coll_ = other.coll_;
@@ -30,23 +31,23 @@ public:
 
             }
         }
-    }
+    } */
 
 
-    /*  matrix_t( unsigned int rows, unsigned int coll)
+     matrix_t( unsigned int rows, unsigned int coll)
       {
           rows_ = rows;
           coll_ = coll;
-          data_ = new int *[rows];
-          for (unsigned int i = 0; i < rows; i++)
+          data_ = new int *[rows_];
+          for (unsigned int i = 0; i < rows_; i++)
           {
-              data_[i] = int[coll];
-              for (unsigned int j = 0; j < coll; j++)
+              data_[i] = int[coll_];
+              for (unsigned int j = 0; j < coll_; j++)
               {
                   data_[i][j] = 0;
               }
           }
-      } */
+      }
 
 
 
@@ -150,7 +151,7 @@ public:
     }
 
 
-    bool read_name(string &name1, char &op, string &name2) {
+    bool name(string &name1, char &op, string &name2) {
         string line;
         getline(cin, line);
         istringstream stream(line);
@@ -170,7 +171,7 @@ public:
 
     ~matrix_t(unsigned int rows_, unsigned coll_) const
     {
-        for (unsigned int i = 0; i < rows_; i++) 
+        for (unsigned int i = 0; i < rows_; i++)
         {
             delete[] data_[i];
         }
@@ -187,7 +188,7 @@ int main()
 
     char op ;
     string name1, name2;
-    if (!(read_name_of_file(name1, op, name2))) {
+    if (!(name(name1, op, name2))) {
         cout << "Error 2";
         cin.get();
         return 0;
@@ -233,3 +234,5 @@ int main()
     cin.get();
     return 0;
 }
+
+
